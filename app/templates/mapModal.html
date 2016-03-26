@@ -1,0 +1,41 @@
+<ion-modal-view class="myModal" class="hideMainModal" ng-hide="mainModalHidden">
+<ion-header-bar>
+  <h1 class="modalTitle">Region Information</h1>
+</ion-header-bar>
+<ion-content class="modalContent" ng-class="{'hideMainModal': mainModalHidden}">
+	<!-- Opening info: show when quest begins -->
+	<h2 ng-show="justStarting" class="title">{{quest.openingInfo.title}}</h2>
+	<div ng-show="justStarting && quest.openingInfo.imageUrl" class="modal-image"><img src="{{quest.openingInfo.imageUrl}}"></div>
+	<p ng-show="justStarting">{{quest.openingInfo.text}}</p>
+
+	<!-- Show for transition steps -->
+	<h2 ng-show="questNotOver && !justStarting">{{currentStep.transitionInfo.title}}</h2>
+	<div ng-show="!justStarting && currentStep.transitionInfo.imageUrl" class="modal-image"><img src="{{currentStep.transitionInfo.imageUrl}}"></div>
+	<p ng-show="questNotOver && !justStarting">{{currentStep.transitionInfo.text}}</p>
+	<!-- Show only when an answer is required to move to next step -->
+	<p ng-show="currentStep.transitionInfo.question.length && !justStarting && questNotOver">{{currentStep.transitionInfo.question}}</p>
+	<input ng-show="currentStep.transitionInfo.question.length && !justStarting && questNotOver" class="answer" type="text" ng-model="form.answer">
+	<p ng-show="wrongAnswer" class="wrongAnswer">Incorrect!</p>
+
+	<!-- Closing info: show when quest ends -->
+	<!-- if there is no winner and the quest is over -->
+	<div ng-show="!wins.winner && !questNotOver">
+		<h2 class="winMessage">Congratulations,<br><span class="winMessage">You WON!</span></h2>
+	</div>
+	<h2 ng-show="!questNotOver">{{currentStep.closingInfo.title}}</h2>
+	<p ng-show="!questNotOver">{{currentdStep.closingInfo.text}}</p>
+	<div ng-show="!questNotOver && !hideReviewBox" class="reviewBox">
+		<p>Review This Quest:</p>
+		<rating ng-model="review.rating" max="5" ng-change="submitReview()"></rating>
+		<div class="" ng-show="isReviewSubmitted">Submitting review ... </div>
+		<div class="" ng-show="reviewIsSubmitted">Thanks for the review :) </div>
+	</div>
+    <button ng-show="!questNotOver" ng-click="timeToGoHome();" class="btn btn-success questFinishButtons endButton chooseAnotherQuest">Choose Another Quest</button>
+    <button ng-show="!questNotOver" ng-click="attemptCloseModal()" class="btn btn-success endButton">Stay And Explore</button>
+
+  <button ng-hide="!questNotOver" class="button button-full button-energized closeModalButton" ng-click="attemptCloseModal()">
+  	 {{ button.buttonMessage }}
+  </button>
+
+</ion-content>
+</ion-modal-view>

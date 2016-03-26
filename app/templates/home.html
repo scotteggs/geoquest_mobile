@@ -1,0 +1,24 @@
+<ion-view view-title="Home" align-title="center">
+<ion-content scroll="true">
+	<navbar home="home" user="user" startedquests="startedQuests"></navbar>
+	<section>
+	<div class="container">
+		<div class="center welcome" ng-show="user">Welcome, {{user.userName}}</div>
+		<h2 ng-class="{'no-top-margin': user}" class="center">Select a Quest</h2>
+		<form>
+			<div class="form-group">
+				<input class="form-control" placeholder="Filter Quests by Name" type="text" ng-model="desiredQuest.name">
+			</div>
+		</form>
+
+		<div class="quest" ng-repeat="quest in quests | filter:desiredQuest">
+			<p><a class="questButton" ng-click="toContacts(quest)">{{quest.name}}</a></p>
+			<p>Starts {{quest.distFromMe}} Miles From You</p>
+			<p>Covers {{quest.totalDistance}} Miles</p>
+			<p>Takes Roughly {{quest.time}} Hours</p>
+			<p>{{quest.reviews.length}} Reviews: Avg {{quest.averageReview}}/5</p>
+			<p>Summary: {{quest.summary}}</p>
+		</div>
+	</div>
+</ion-content>
+</ion-view>

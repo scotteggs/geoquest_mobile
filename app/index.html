@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <link href="styles/style.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="styles/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/ionic-rating/ionic-rating.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+<!-- 
+    <link rel="stylesheet" href="/leaflet/dist/leaflet.css"></link>
+    <script src="/leaflet/dist/leaflet.js"></script>
+    <script src="/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+ -->
+    <!-- build:js scripts/scripts.js -->
+
+    <!-- Called when client arrives at site via custom url
+    url saved to window, then used in pergatory state -->
+
+    <script src="bower_components/socket.io-client/socket.io.js"></script> 
+    <script src="scripts/app.js"></script>
+    <script src="scripts/Leaflet.MakiMarkers.js"></script>
+    <script src="scripts/configuration.js"></script>
+
+    <script src="scripts/controllers/homectrl.js"></script>
+    <script src="scripts/controllers/mapctrl.js"></script>
+    <script src="scripts/controllers/contactsctrl.js"></script>
+    <script src="scripts/controllers/startedquestctrl.js"></script>
+    <script src="scripts/controllers/transitionctrl.js"></script>
+
+    <script src="scripts/factories/startedquest-factory.js"></script>
+    <script src="scripts/factories/contacts-factory.js"></script>
+    <script src="scripts/factories/quest-factory.js"></script>
+    <script src="scripts/factories/map-factory.js"></script>
+    <script src="scripts/factories/auth-factory.js"></script>
+    <script src="scripts/factories/auth-modal.js"></script>
+    <script src="scripts/factories/notification-factory.js"></script>
+    <script src="scripts/factories/socket-factory.js"></script>
+    <script src="scripts/factories/geo-factory.js"></script>
+    <script src="scripts/factories/click-factory.js"></script>
+
+    <script src="scripts/states/home-state.js"></script>
+    <script src="scripts/states/map-state.js"></script>
+    <script src="scripts/states/contacts-state.js"></script>
+    <script src="scripts/states/startedquest-state.js"></script>
+    <script src="scripts/states/transition-state.js"></script>
+
+    <script src="scripts/directives/navbar.js"></script>
+
+    <!-- Handle Custom Url Open Event -->
+    <script>
+        function handleOpenURL(url) {
+          window.localStorage.setItem('external_load', url);
+        }
+    </script>
+    
+  </head>
+  <body ng-app="GeoQuest">
+
+    <ion-nav-view></ion-nav-view>
+
+  </body>
+</html>

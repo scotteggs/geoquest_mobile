@@ -1,0 +1,24 @@
+<ion-view view-title="Pergatory" align-title="center">
+<ion-content scroll="true">
+<navbar home="home" user="user" socket="socket" nssocket="nsSocket"startedquests="startedQuests"></navbar>
+<section>
+	<div class="container">
+		<div class="center welcome" ng-show="user">Welcome, {{user.userName}}</div>
+		<h2 ng-class="{'no-top-margin': user}" class="center">Choose Your Fellowship</h2>
+		<form>
+			<div class="form-group">
+				<input class="form-control" placeholder="Filter Fellows by Name" type="text" ng-model="desiredContact.name">
+			</div>
+			<button ng-click="summonFellows(true)" class="btn btn-info">Summon!</button>
+			<button ng-click="summonFellows(false)" class="btn btn-info">Travel Alone</button>
+		</form>
+		<div class="contacts">
+			<div ng-click="choose(contact)" ng-repeat="contact in contacts | filter:desiredContact" class="contact clearfix">
+				<span class="name">{{contact.name}} </span>
+				<span class=" pull-right number">{{contact.number}}</span>
+			</div>
+		</div>
+	</div>
+</section>
+</ion-content>
+</ion-view>
